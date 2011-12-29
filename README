@@ -1,10 +1,11 @@
-##This is my own blog powered by Java Struts2##
+<strong>This is my own blog powered by Java Struts2</strong>
 
-_how to_
+<em>how to</em>
 
 download this file and extract you will get a Java web project find mysql.properties and rename your own sql username and 
 password.
 
+<code>   
     # database driver class
     dbDriver = com.mysql.jdbc.Driver
 
@@ -16,7 +17,7 @@ password.
 
     # database password
     password = root
-
-_finally_
+</code>
+<em>finally</em>
 
 package this file to .war and upload to your server.
