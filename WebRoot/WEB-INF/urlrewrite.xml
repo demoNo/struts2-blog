@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 3.2//EN"
+        "http://tuckey.org/res/dtds/urlrewrite3.2.dtd">
+
+<!--
+
+    Configuration file for UrlRewriteFilter
+    http://tuckey.org/urlrewrite/
+
+-->
+<urlrewrite>
+    <!-- 前台操作 -->
+    <rule>
+        <from>/index</from>
+        <to>/index.action</to>
+    </rule>
+    <rule>
+        <from>/admin</from>
+        <to>/blog/admin.jsp</to>
+    </rule>
+    
+    <rule>
+        <from>/sitemap</from>
+        <to>/sitemap.action</to>
+    </rule>
+    <rule>
+        <from>/about</from>
+        <to>/blog/about.jsp</to>
+    </rule>
+    
+    <rule>
+        <from>/searchres</from>
+        <to>/findtag.action</to>
+    </rule>
+    <rule>
+        <from>/sear/([\s\S]*)$</from>
+        <to>/findtag.action?search=$1</to>
+    </rule>
+    <rule>
+        <from>/user/([\s\S]*)$</from>
+        <to>/getUsr.action?uname=$1</to>
+    </rule>
+    <rule>
+        <from>/login</from>
+        <to>/blog/login.jsp</to>
+    </rule>
+    <rule>
+        <from>/register</from>
+        <to>/blog/register.jsp</to>
+    </rule>
+    <rule>
+        <from>/singup</from>
+        <to>/register.action</to>
+    </rule>
+    <rule>
+        <from>/essay/([\s\S]*)/([\s\S]*)$</from>
+        <to>/main.action?date=$1&amp;id=$2</to>
+    </rule>
+    <rule>
+        <from>/class/([\s\S]*)$</from>
+        <to>/clsfic.action?cls=$1</to>
+    </rule>
+    <rule>
+        <from>/signin</from>
+        <to>/login.action</to>
+    </rule>
+    <rule>
+        <from>/logout</from>
+        <to>/logout.action</to>
+    </rule>
+    <!-- 后台管理 -->
+    <rule>
+        <from>/control/efirst</from>
+        <to>/efirst.action</to>
+    </rule>
+    <rule>
+        <from>/control/elast</from>
+        <to>/elast.action</to>
+    </rule>
+    
+    <rule>
+        <from>/control/insertart</from>
+        <to>/addessay.action</to>
+    </rule>
+    <rule>
+        <from>/control/upessay</from>
+        <to>/upEss.action</to>
+    </rule>
+    
+     <rule>
+        <from>/control/addEssay</from>
+        <to>/blog/addEssay.jsp</to>
+    </rule>
+    
+    <rule>
+        <from>/getEssay/([\s\S]*)$</from>
+        <to>/getEss.action?id=$1</to>
+    </rule>
+    
+    <rule>
+        <from>/control/cfirst</from>
+        <to>/cfirst.action</to>
+    </rule>
+    <rule>
+        <from>/control/clast</from>
+        <to>/clast.action</to>
+    </rule>
+    
+    <rule>
+        <from>/control/urfirst</from>
+        <to>/urfirst.action</to>
+    </rule>
+    <rule>
+        <from>/control/urlast</from>
+        <to>/urlast.action</to>
+    </rule>
+    
+    <rule>
+        <from>/control/ufirst</from>
+        <to>/ufirst.action</to>
+    </rule>
+    <rule>
+        <from>/control/ulast</from>
+        <to>/ulast.action</to>
+    </rule>
+ 
+    <!-- 分页 -->
+    <rule>
+        <from>/page/first</from>
+        <to>/first.action</to>
+    </rule>
+    <rule>
+        <from>/page/last</from>
+        <to>/last.action</to>
+    </rule>
+    <rule>
+        <from>/page/clsfir</from>
+        <to>/firstc.action</to>
+    </rule>
+    <rule>
+        <from>/page/clslas</from>
+        <to>/lastc.action</to>
+    </rule>
+    <rule>
+        <from>/page/resfir</from>
+        <to>/firsts.action</to>
+    </rule>
+    <rule>
+        <from>/page/reslas</from>
+        <to>/lasts.action</to>
+    </rule>
+    
+    <outbound-rule>
+        <from>/rewrite-status</from>
+        <to>/test/status/</to>
+    </outbound-rule>
+
+</urlrewrite>
+

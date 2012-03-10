@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="default" namespace="/" extends="struts-default">
+	    <!-- 404页面 -->
+	    <default-action-ref name="pagenotfound"></default-action-ref>  
+        <action name="pagenotfound">  
+              <result>blog/pagenotfound.jsp</result>  
+        </action>
+		<!-- 图片上传 -->
+		<action name="upload" class="orz.xblog.action.UploadAction" method="upload">
+		</action>
+		<!-- ajax验证 -->
+		<action name="validate" class="orz.xblog.action.ValidateAction"
+			method="validate">
+		</action>
+		<!-- 站点地图 -->
+		<action name="sitemap" class="orz.xblog.action.Xaction"
+			method="sitemap">
+			<result name="success">blog/sitemap.jsp</result>
+		</action>
+		<!-- 文章的分类查找功能 -->
+		<action name="clsfic" class="orz.xblog.action.FindBycls"
+			method="cindex">
+			<result name="success">blog/class.jsp</result>
+		</action>
+		<action name="firstc" class="orz.xblog.action.FindBycls"
+			method="first">
+			<result name="success">blog/class.jsp</result>
+		</action>
+		<action name="prec" class="orz.xblog.action.FindBycls"
+			method="pre">
+			<result name="success">blog/class.jsp</result>
+		</action>
+		<action name="nextc" class="orz.xblog.action.FindBycls"
+			method="next">
+			<result name="success">blog/class.jsp</result>
+		</action>
+		<action name="lastc" class="orz.xblog.action.FindBycls"
+			method="last">
+			<result name="success">blog/class.jsp</result>
+		</action>
+		<!-- 文章分页功能 -->
+		<action name="first" class="orz.xblog.action.EspageAction"
+			method="first">
+			<result name="success">blog/index.jsp</result>
+		</action>
+		<action name="pre" class="orz.xblog.action.EspageAction"
+			method="pre">
+			<result name="success">blog/index.jsp</result>
+		</action>
+		<action name="next" class="orz.xblog.action.EspageAction"
+			method="next">
+			<result name="success">blog/index.jsp</result>
+		</action>
+		<action name="last" class="orz.xblog.action.EspageAction"
+			method="last">
+			<result name="success">blog/index.jsp</result>
+		</action>
+		<action name="efirst" class="orz.xblog.action.EspageAction"
+			method="first">
+			<result name="success">blog/admin.jsp</result>
+		</action>
+		<action name="epre" class="orz.xblog.action.EspageAction"
+			method="pre">
+			<result name="success">blog/admin.jsp</result>
+		</action>
+		<action name="enext" class="orz.xblog.action.EspageAction"
+			method="next">
+			<result name="success">blog/admin.jsp</result>
+		</action>
+		<action name="elast" class="orz.xblog.action.EspageAction"
+			method="last">
+			<result name="success">blog/admin.jsp</result>
+		</action>
+		<!-- 评论分页功能 -->
+		<action name="cfirst" class="orz.xblog.action.Commpage"
+			method="first">
+			<result name="success">blog/admin.jsp</result>
+		</action>
+		<action name="cpre" class="orz.xblog.action.Commpage"
+			method="pre">
+			<result name="success">blog/admin.jsp</result>
+		</action>
+		<action name="cnext" class="orz.xblog.action.Commpage"
+			method="next">
+			<result name="success">blog/admin.jsp</result>
+		</action>
+		<action name="clast" class="orz.xblog.action.Commpage"
+			method="last">
+			<result name="success">blog/admin.jsp</result>
+		</action>
+		<!-- 用户分页功能 -->
+		<action name="ufirst" class="orz.xblog.action.Userpage"
+			method="first">
+			<result name="success">blog/admin.jsp</result>
+		</action>
+		<action name="upre" class="orz.xblog.action.Userpage"
+			method="pre">
+			<result name="success">blog/admin.jsp</result>
+		</action>
+		<action name="unext" class="orz.xblog.action.Userpage"
+			method="next">
+			<result name="success">blog/admin.jsp</result>
+		</action>
+		<action name="ulast" class="orz.xblog.action.Userpage"
+			method="last">
+			<result name="success">blog/admin.jsp</result>
+		</action>
+		<!-- 友链分页功能 -->
+		<action name="urfirst" class="orz.xblog.action.Urlpage"
+			method="first">
+			<result name="success">blog/admin.jsp</result>
+		</action>
+		<action name="urpre" class="orz.xblog.action.Urlpage"
+			method="pre">
+			<result name="success">blog/admin.jsp</result>
+		</action>
+		<action name="urnext" class="orz.xblog.action.Urlpage"
+			method="next">
+			<result name="success">blog/admin.jsp</result>
+		</action>
+		<action name="urlast" class="orz.xblog.action.Urlpage"
+			method="last">
+			<result name="success">blog/admin.jsp</result>
+		</action>
+		<!-- 登录登出功能 -->
+		<action name="login" class="orz.xblog.action.Login"
+			method="login">
+			<result name="success">blog/admin.jsp</result>
+			<result name="fail">blog/login.jsp</result>
+			<result name="user">blog/users.jsp</result>
+		</action>
+		<action name="logout" class="orz.xblog.action.Login"
+			method="logout">
+			<result name="success">blog/login.jsp</result>
+			<result name="fail">blog/login.jsp</result>
+		</action>
+		<!-- 主界面文章的显示和评论的显示和添加 -->
+		<action name="index" class="orz.xblog.action.Xaction"
+			method="index">
+			<result name="success">blog/index.jsp</result>
+		</action>
+		<action name="main" class="orz.xblog.action.Xaction"
+			method="main">
+			<result name="success">blog/content.jsp</result>
+		</action>
+		<action name="addcomm" class="orz.xblog.action.Xaction"
+			method="addcomm">
+			<result name="success">blog/content.jsp</result>
+		</action>
+		<!-- 对各项内容进行删除 -->
+		<action name="delEss" class="orz.xblog.action.DelAction"
+			method="delEssay">
+			<result name="success">blog/admin.jsp</result>
+			<result name="fail">blog/admin.jsp</result>
+		</action>
+		<action name="delCom" class="orz.xblog.action.DelAction"
+			method="delComment">
+			<result name="success">blog/admin.jsp</result>
+			<result name="fail">blog/admin.jsp</result>
+		</action>
+		<action name="delUrl" class="orz.xblog.action.DelAction"
+			method="delUrl">
+			<result name="success">blog/admin.jsp</result>
+			<result name="fail">blog/admin.jsp</result>
+		</action>
+		<action name="delUser" class="orz.xblog.action.DelAction"
+			method="delUser">
+			<result name="success">blog/admin.jsp</result>
+			<result name="fail">blog/admin.jsp</result>
+		</action>
+		<!-- 对各项内容进行更新 -->
+		<action name="getEss" class="orz.xblog.action.UpAction"
+			method="getEss">
+			<result name="success">blog/update.jsp</result>
+		</action>
+		<action name="getUsr" class="orz.xblog.action.UpAction"
+			method="getUs">
+			<result name="admin">blog/admin.jsp</result>
+			<result name="success">blog/users.jsp</result>
+			<result name="fail">blog/login.jsp</result>
+		</action>
+		<action name="upEss" class="orz.xblog.action.UpAction"
+			method="upEssay">
+			<result name="admin">blog/admin.jsp</result>
+			<result name="user">blog/users.jsp</result>
+			<result name="fail">blog/fail.jsp</result>
+		</action>
+		<action name="updateUser" class="orz.xblog.action.UpAction"
+			method="upUser">
+			<result name="admin">blog/admin.jsp</result>
+			<result name="user">blog/users.jsp</result>
+		</action>
+		<action name="updatePwd" class="orz.xblog.action.UpAction"
+			method="upUserpwd">
+			<result name="admin">blog/admin.jsp</result>
+			<result name="user">blog/users.jsp</result>
+		</action>
+		<!-- 添加内容 -->
+		<action name="addessay" class="orz.xblog.action.AddAction"
+			method="addEssay">
+			<result name="admin">blog/admin.jsp</result>
+			<result name="user">blog/users.jsp</result>
+		</action>
+		<action name="register" class="orz.xblog.action.AddAction"
+			method="addUser">
+			<result name="success">blog/login.jsp</result>
+			<result name="fail">blog/error.jsp</result>
+		</action>
+		<action name="addurl" class="orz.xblog.action.AddAction"
+			method="addUrl">
+			<result name="success">blog/admin.jsp</result>
+			<result name="fail">blog/admin.jsp</result>
+		</action>
+		<!-- 文章的搜索查找功能 -->
+		<action name="findtag" class="orz.xblog.action.FindBysear"
+			method="sindex">
+			<result name="success">blog/result.jsp</result>
+		</action>
+		<action name="firsts" class="orz.xblog.action.FindBysear"
+			method="first">
+			<result name="success">blog/result.jsp</result>
+		</action>
+		<action name="pres" class="orz.xblog.action.FindBysear"
+			method="pre">
+			<result name="success">blog/result.jsp</result>
+		</action>
+		<action name="nexts" class="orz.xblog.action.FindBysear"
+			method="next">
+			<result name="success">blog/result.jsp</result>
+		</action>
+		<action name="lasts" class="orz.xblog.action.FindBysear"
+			method="last">
+			<result name="success">blog/result.jsp</result>
+		</action>
+	</package>
+</struts>

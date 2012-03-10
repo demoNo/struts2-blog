@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>test.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script src="res/js/jquery-1.7.js" type="text/javascript"></script>
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+   <style>
+   #fake {
+      display: block;
+      border: 1px solid;
+      height: 30px;
+   }
+   #tagout span{
+      color: #fff;
+      background: green;
+      display: inline-block;
+      border-radius: 2px;
+      margin: 2px;
+      padding: 1px 2px;
+   }
+   #tagin {
+      border: none;
+      outline: none;
+   }
+   #tagout {
+      float: left;
+   }
+   span span:hover {
+      cursor: pointer;
+      text-shadow: 0 0 2px #000;
+      color: red;
+   }
+   .close{
+      font-weight: bold;
+      font-size: 12px;
+      color: red;
+   }
+   </style>
+  <body>
+    <div id="fake"><div id="tagout"></div><input type="text" id="tagin"></div>
+    <div id="test"></div>
+  </body>
+  <script type="text/javascript">
+     var i = 0;
+     var tem = "";
+     var real = "";
+       $('#tagin').bind("keydown",function(e){
+           $('#tagin').val($('#tagin').val().replace(" ","")); 
+           //响应退格键删除最后一个标签
+           if(e.which == 8 && i > 0 && $('#tagin')[0].selectionStart == 0){
+              var str = "<span>"+$('#'+i+'').parent().html()+"</span>";
+              var del =  $('#'+i+'').parent().text().replace(" ×","");
+              real = real.replace(del+",","");
+              str = str.replace(/\"/g, '\'');
+              tem = tem.replace(str,"");
+              $('#'+i+'').parent().remove(); 
+              i--;
+              $('#test').text(real);
+             }
+            //响应粘贴键
+            if ( e.ctrlKey && (e.which == 86 || e.which==118) ){
+              //todo....
+            } 
+       });
+       $('#fake').click(function(){
+          $('#tagin').focus();
+       });
+     
+     $('#tagin').bind("keyup",function(){  
+         //限制5个标签.
+         if(i >= 5)
+           $('#tagin').val("");
+         //每次输入空格时转换成标签.   
+         if($('#tagin').val().indexOf(" ") != -1 && $.trim($('#tagin').val()).length >= 1){
+           //如果有重复的禁止输入.    
+           if($('#tagout').text() !="" && $('#tagout').text().indexOf($('#tagin').val()) != -1){
+             $('#tagin').val("");
+             return false;
+            }  
+           i++;
+           tem += "<span>"+$('#tagin').val()+"<span id='"+i+"' class='close'>×</span></span>";
+           real += $.trim($('#tagin').val())+",";
+           $('#tagout').html(tem);
+           $('#tagin').val("");
+           //为每个新加的标签添加点击事件.
+           $('.close').bind("click", function(){
+              var del =  $(this).parent().text().replace(" ×","");
+              var str = "<span>"+$(this).parent().html()+"</span>";
+              real = real.replace(del+",","");
+              str = str.replace(/\"/g, '\'');
+              tem = tem.replace(str,"");
+              $(this).parent().remove(); 
+              i--;
+              $('#test').text(real);
+             });
+         } 
+         $('#test').text(real);
+     });
+  </script>
+</html>
